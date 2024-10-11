@@ -43,23 +43,10 @@ main() {
         }
         moveEnemy1();
         moveEnemy2();
+        Sleep(150);
     }
 }
 
-void moveplayer() {
-    int x = 60, y = 2;
-    while(true) {
-        gotoxy(x ,y);
-        cout << "P";
-        Sleep(200);
-        gotoxy(x, y);
-        cout << " ";
-        y += 1;
-        if (y > 10) {
-        y == 3;
-        }
-    }
-}
 
 void printEnemy1() {
     gotoxy(e1X,e1Y);
@@ -90,19 +77,19 @@ void eraseEnemy1() {
 void moveEnemy1() {
     
     if (goDown1) {
-        printEnemy1();
-        Sleep(2);
         eraseEnemy1();
+        printEnemy1();
+        
         e1Y = e1Y + 1;
-     if(e1Y == 14)
+     if(e1Y == 13)
     {
         goDown1 = false;
     }
     }
     else if (!goDown1) {
-        printEnemy1();
-        Sleep(2);
         eraseEnemy1();
+        printEnemy1();
+        
         e1Y = e1Y - 1;
     if (e1Y == 2) 
     {
@@ -140,9 +127,9 @@ void eraseEnemy2() {
 void moveEnemy2() {
     
     if (goDown2) {
-        printEnemy2();
-        Sleep(2);
         eraseEnemy2();
+        printEnemy2();
+        
         e2Y = e2Y + 1;
      if(e2Y == 28)
     {
@@ -150,9 +137,9 @@ void moveEnemy2() {
     }
     }
     else if (!goDown2) {
-        printEnemy2();
-        Sleep(2);
         eraseEnemy2();
+        printEnemy2();
+        
         e2Y = e2Y - 1;
     if (e2Y == 16) 
     {
