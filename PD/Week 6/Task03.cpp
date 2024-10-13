@@ -18,25 +18,40 @@ main() {
 
 string sign(int x, string y) {
     string zodiac;
-        if ((y == "jan" && x >= 18 %% x <= 31 )) {
-        return zodiac = "A+";
+        if (( y == "january" && (x >= 18 && x <= 31) ) || ( y == "february" && (x >= 1 && x <= 18) )) {
+        return zodiac = "Aquarious";
     }
-        if (x >= 80 && x < 90) {
-        return grade = "A";
+        if (( y == "march" && (x >= 21 && x <= 31) ) || ( y == "april" && (x >= 1 && x <= 19) )) {
+        return zodiac = "Aries";
     }
-        if (x >= 70 && x < 80) {
-        return grade = "B+";
+        if (( y == "april" && (x >= 20 && x <= 30) ) || ( y == "may" && (x >= 1 && x <= 20) )) {
+        return zodiac = "Taurus";
     }
-        if (x >= 60 && x < 70) {
-        return grade = "B";
+        if (( y == "may" && (x >= 21 && x <= 31) ) || ( y == "june" && (x >= 1 && x <= 20) )) {
+        return zodiac = "Gemini";
     }
-        if (x >= 50 && x < 60) {
-        return grade = "C";
+        if (( y == "june" && (x >= 21 && x <= 30) ) || ( y == "july" && (x >= 1 && x <= 22) )) {
+        return zodiac = "Cancer";
     }
-        if (x >= 40 && x < 50) {
-        return grade = "D";
+        if (( y == "july" && (x >= 23 && x <= 31) ) || ( y == "august" && (x >= 1 && x <= 22) )) {
+        return zodiac = "Leo";
     }
-        if (x < 40) {
-        return grade = "F";
+        if (( y == "august" && (x >= 23 && x <= 31) ) || ( y == "september" && (x >= 1 && x <= 22) )) {
+        return zodiac = "Virgo";
+    }
+        if (( y == "september" && (x >= 23 && x <= 30) ) || ( y == "october" && (x >= 1 && x <= 22) )) {
+        return zodiac = "Libra";
+    }
+        if (( y == "october" && (x >= 23 && x <= 31) ) || ( y == "november" && (x >= 1 && x <= 21) )) {
+        return zodiac = "Scorpio";
+    }
+            if (( y == "november" && (x >= 22 && x <= 30) ) || ( y == "december" && (x >= 1 && x <= 21) )) {
+        return zodiac = "Sagittarius";
+    }
+            if (( y == "december" && (x >= 22 && x <= 31) ) || ( y == "january" && (x >= 1 && x <= 19) )) {
+        return zodiac = "Capricorn";
+    }
+    else {
+        return zodiac = "Nothing, Enter a valid Date";
     }
 }
