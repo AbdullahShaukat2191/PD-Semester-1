@@ -226,7 +226,7 @@ void printPill1() {
 
 void erasePill1() {
     gotoxy(pill1X,pill1Y);
-    cout << "   ";
+    cout << "   ";  
     gotoxy(pill1X,pill1Y+1);
     cout << "   ";
     gotoxy(pill1X,pill1Y+2);
