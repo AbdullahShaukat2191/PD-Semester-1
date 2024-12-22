@@ -2,8 +2,6 @@
 using namespace std;
 main()
 {
-    system("cls");
-    
     string character[4];
     int count = 0;
 
@@ -19,13 +17,5 @@ main()
         {
             count = count + 1;
         }
-    }
-    if (count == 4)
-    {
-        cout << "True";
-    }
-    else
-    {
-        cout << "False";
     }
 }

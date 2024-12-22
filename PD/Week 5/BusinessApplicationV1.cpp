@@ -310,10 +310,12 @@ void login() {
     string password;
     cout << "Enter your Password (Admin/User): ";
     cin >> password;
-    if (password == "admin2191") {
+    if (password == "admin2191")
+    {
         admin_menu();
     }
-    else if (password == "user2191") {
+    else if (password == "user2191")
+    {
         user_menu();
     }
     else {

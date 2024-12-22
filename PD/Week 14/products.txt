@@ -1,0 +1,5 @@
+Boys Jeans,350,37,10
+Undies,300,15,7
+Boys Jacket,1400,21,15
+Girls Frock,800,28,8
+Girls Shoes,400,9,10

@@ -1,11 +1,15 @@
 #include <iostream>
 #include <windows.h>
+#include <random>
+
 using namespace std;
 
 void gotoxy(int, int);
 char getCharAtxy(short int, short int);
+int ran(int x, int y);
 void printMaze();
 void printScore();
+void incrementScore();
 
 void eraseEnemy1();
 void printEnemy1();
@@ -19,14 +23,8 @@ void eraseEnemy3();
 void printEnemy3();
 void moveEnemy3();
 
-void printPill1();
-void erasePill1();
-
-void printPill2();
-void erasePill2();
-
-void printPill3();
-void erasePill3();
+void printPill();
+void erasePill();
 
 void erasePlayer();
 void printPlayer();
@@ -39,25 +37,18 @@ void movePlayerRight();
 int e1X = 75, e1Y = 3;
 int e2X = 75, e2Y = 18;
 int e3X = 5 , e3Y = 3;
-int pill1X = 35, pill1Y = 22;
-int pill2X = 60, pill2Y = 10;
-int pill3X = 20, pill3Y = 30;
 int pX = 5, pY = 15;
+int pillX = ran(12, 45), pillY = ran(6, 27);
 int score = 0;
 bool goDown1 = true;
 bool goDown2 = true;
 bool goLeft = true;
-bool pill1 = true;
-bool pill2 = true;
-bool pill3 = true;
 
 main() {
     system("cls");
     printMaze();
     printPlayer();
-    printPill1();
-    //printPill2();
-    //printPill3();
+    printPill();
 
     while (true) {
         printScore();
@@ -78,7 +69,7 @@ main() {
         moveEnemy1();
         moveEnemy2();
         moveEnemy3();
-        Sleep(150);
+        Sleep(50);
     }
 }
 
@@ -215,57 +206,21 @@ void moveEnemy3() {
     }
 }
 
-void printPill1() {
-    gotoxy(pill1X,pill1Y);
+void printPill() {
+    gotoxy(pillX,pillY);
     cout << " . ";
-    gotoxy(pill1X,pill1Y+1);
+    gotoxy(pillX,pillY+1);
     cout << "...";
-    gotoxy(pill1X,pill1Y+2);
+    gotoxy(pillX,pillY+2);
     cout << " . ";
 }
 
-void erasePill1() {
-    gotoxy(pill1X,pill1Y);
-    cout << "   ";  
-    gotoxy(pill1X,pill1Y+1);
+void erasePill() {
+    gotoxy(pillX,pillY);
     cout << "   ";
-    gotoxy(pill1X,pill1Y+2);
+    gotoxy(pillX,pillY+1);
     cout << "   ";
-}
-
-void printPill2() {
-    gotoxy(pill2X,pill2Y);
-    cout << " . ";
-    gotoxy(pill2X,pill2Y+1);
-    cout << "...";
-    gotoxy(pill2X,pill2Y+2);
-    cout << " . ";
-}
-
-void erasePill2() {
-    gotoxy(pill2X,pill2Y);
-    cout << "   ";
-    gotoxy(pill2X,pill2Y+1);
-    cout << "   ";
-    gotoxy(pill2X,pill2Y+2);
-    cout << "   ";
-}
-
-void printPill3() {
-    gotoxy(pill3X,pill3Y);
-    cout << " . ";
-    gotoxy(pill3X,pill3Y+1);
-    cout << "...";
-    gotoxy(pill3X,pill3Y+2);
-    cout << " . ";
-}
-
-void erasePill3() {
-    gotoxy(pill3X,pill3Y);
-    cout << "   ";
-    gotoxy(pill3X,pill3Y+1);
-    cout << "   ";
-    gotoxy(pill3X,pill3Y+2);
+    gotoxy(pillX,pillY+2);
     cout << "   ";
 }
 
@@ -284,15 +239,15 @@ void erasePlayer() {
 
 void printPlayer() {
     gotoxy(pX,pY);
-    cout << "--------      ";
+    cout << "--------";
     gotoxy(pX, pY+1);
-    cout << "\\-||-||-\\\\    ";
+    cout << "\\-||-||-\\\\";
     gotoxy(pX, pY+2);
     cout << " ><SAVIOR> >";
     gotoxy(pX, pY+3);
-    cout << "/-||-||-//    ";
+    cout << "/-||-||-//";
     gotoxy(pX, pY+4);
-    cout << "--------      ";
+    cout << "--------";
 }
 
 void movePlayerUp() {
@@ -301,11 +256,9 @@ void movePlayerUp() {
             pY = pY - 1;
             printPlayer();
     }
-    if (getCharAtxy(pX, pY) == '.') {
-        erasePill1();
-        //erasePill2();
-        //erasePill3();
-        score = score + 50;
+    if (getCharAtxy(pX+3, pY+5) == '.') {
+        erasePill();
+        incrementScore();
     }
 }
 
@@ -316,10 +269,8 @@ void movePlayerDown() {
             printPlayer();
     }
     if (getCharAtxy(pX+3 , pY + 7) == '.') {
-        erasePill1();
-        //erasePill2();
-        //erasePill3();
-        score = score + 50;
+        erasePill();
+        incrementScore();
     }
 }
 void movePlayerLeft() {
@@ -329,10 +280,8 @@ void movePlayerLeft() {
     printPlayer();
     }
     if (getCharAtxy(pX-1, pY + 2) == '.') {
-        erasePill1();
-        //erasePill2();
-        //erasePill3();
-        score = score + 50;
+        erasePill();
+        incrementScore();
     }
 }
 
@@ -343,17 +292,19 @@ void movePlayerRight() {
         printPlayer();
     }
     if (getCharAtxy(pX+13, pY+2) == '.') {
-        erasePill1();
-        //erasePill2();
-        //erasePill3();
-        score = score + 50;
+        erasePill();
+        incrementScore();
     }
 }
 
 void printScore() {
     gotoxy(100, 2);
-    cout << "SCORE:";
-    cout << score;
+    cout << "SCORE:" <<score;
+}
+
+void incrementScore()
+{
+    score += 50;
 }
 
 void gotoxy(int x, int y) {
@@ -361,6 +312,14 @@ void gotoxy(int x, int y) {
     coordinates.X = x;
     coordinates.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coordinates);
+}
+
+int ran(int x, int y) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distrib(x, y);
+
+    return distrib(gen);
 }
 
 char getCharAtxy(short int x, short int y) {
